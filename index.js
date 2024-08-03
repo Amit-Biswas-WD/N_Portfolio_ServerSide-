@@ -27,9 +27,15 @@ async function run() {
     await client.connect();
 
     const servicesCollection = client.db("portfolioNEXT").collection("services")
+    const skillsCollection = client.db("portfolioNEXT").collection("skills")
 
     app.get("/services", async (req, res) => {
         const result = await servicesCollection.find().toArray()
+        res.send(result)
+    })
+
+    app.get("/skills", async (req, res) => {
+        const result = await skillsCollection.find().toArray()
         res.send(result)
     })
 
