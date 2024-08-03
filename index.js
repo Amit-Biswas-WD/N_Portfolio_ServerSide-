@@ -29,6 +29,7 @@ async function run() {
     const servicesCollection = client.db("portfolioNEXT").collection("services")
     const skillsCollection = client.db("portfolioNEXT").collection("skills")
     const aboutCollection = client.db("portfolioNEXT").collection("about")
+    const workCollection = client.db("portfolioNEXT").collection("work")
 
     app.get("/services", async (req, res) => {
         const result = await servicesCollection.find().toArray()
@@ -42,6 +43,11 @@ async function run() {
 
     app.get("/about", async (req, res) => {
         const result = await aboutCollection.find().toArray()
+        res.send(result)
+    })
+
+    app.get("/work", async (req, res) => {
+        const result = await workCollection.find().toArray()
         res.send(result)
     })
 
